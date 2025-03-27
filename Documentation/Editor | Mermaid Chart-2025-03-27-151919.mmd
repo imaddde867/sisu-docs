@@ -1,0 +1,13 @@
+flowchart TD
+    User[User] --> |spoken audio| Capture[Audio Capture]
+    Capture --> |raw audio data| Preprocess[Audio Preprocessing]
+    Preprocess --> |preprocessed audio| STT[Speech-to-Text]
+    Preprocess --> |preprocessed audio| Pron[Pronunciation Analysis]
+    Preprocess --> |preprocessed audio| Accent[Accent Recognition]
+    STT --> |transcribed text| ExpPron[Expected Pronunciation Generation]
+    ExpPron --> |expected pronunciation| Pron
+    Pron --> |pronunciation assessment| Assessment[Assessment<br>Pronunciation accuracy: voice vs. expected<br>Communication quality: clarity, effectiveness<br>Grammar and Finnish rules<br>Conversational relevance]
+    Accent --> |accent info| Assessment
+    Assessment --> |combined feedback| Feedback[Feedback Generation]
+    Feedback --> |feedback text| TTS[Text-to-Speech]
+    TTS --> |audio feedback| User
