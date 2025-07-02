@@ -10,8 +10,21 @@ The system captures spoken audio, processes it using speech-to-text and pronunci
 
 Below is the process flow of the Finnish Language Tutor:
 
-![Flowchart of Finnish Language Tutor](Documentation/Editor%20%7C%20Mermaid%20Chart-2025-03-27-151933.png)
+flowchart TD
+    User[User] --> |spoken audio| Capture[Audio Capture]
+    Capture --> |raw audio data| Preprocess[Audio Preprocessing]
+    Preprocess --> |preprocessed audio| STT[Speech-to-Text]
+    Preprocess --> |preprocessed audio| Pron[Pronunciation Analysis]
+    Preprocess --> |preprocessed audio| Accent[Accent Recognition]
+    STT --> |transcribed text| ExpPron[Expected Pronunciation Generation]
+    ExpPron --> |expected pronunciation| Pron
+    Pron --> |pronunciation assessment| Assessment[Assessment<br>Pronunciation accuracy: voice vs. expected<br>Communication quality: clarity, effectiveness<br>Grammar and Finnish rules<br>Conversational relevance]
+    Accent --> |accent info| Assessment
+    Assessment --> |combined feedback| Feedback[Feedback Generation]
+    Feedback --> |feedback text| TTS[Text-to-Speech]
+    TTS --> |audio feedback| User
 
+    
 ### Process Description
 1. **Audio Capture**: Records the user's spoken Finnish input.
 2. **Audio Preprocessing**: Cleans and prepares the raw audio data.
